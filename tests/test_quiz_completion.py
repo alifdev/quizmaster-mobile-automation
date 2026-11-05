@@ -51,6 +51,8 @@ def test_user_can_complete_quiz_and_view_results(driver):
     # Step 3: Wait for the Results screen.
     assert results_page.is_result_screen_displayed()
 
+    results_page.save_screenshot("03-results-screen.png")
+
     # Step 4: Validate the final score.
     final_score = results_page.get_final_score()
 

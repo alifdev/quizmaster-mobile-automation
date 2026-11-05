@@ -1,11 +1,22 @@
+import os
 
-APPIUM_SERVER_URL = "http://127.0.0.1:4723"
+APPIUM_SERVER_URL = os.getenv(
+    "APPIUM_SERVER_URL",
+    "http://127.0.0.1:4723"
+)
 
 PLATFORM_NAME = "Android"
 AUTOMATION_NAME = "UiAutomator2"
 
-DEVICE_NAME = "emulator-5554"
-UDID = "emulator-5554"
+DEVICE_NAME = os.getenv(
+    "DEVICE_NAME",
+    "emulator-5554"
+)
+
+UDID = os.getenv(
+    "UDID",
+    "emulator-5554"
+)
 
 APP_PACKAGE = "com.example.quizmaster"
 APP_ACTIVITY = ".MainActivity"

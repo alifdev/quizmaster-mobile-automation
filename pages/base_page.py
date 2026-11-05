@@ -1,6 +1,8 @@
 
 import time
 
+from pathlib import Path
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -32,3 +34,24 @@ class BasePage:
     def demo_pause(self):
         if DEMO_MODE:
             time.sleep(DEMO_ACTION_DELAY)
+
+    def save_screenshot(self, filename):
+        screenshot_dir = (
+            Path(__file__).resolve().parent.parent
+            / "screenshots"
+        )
+
+        screenshot_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+        screenshot_path = screenshot_dir / filename
+
+        self.driver.save_screenshot(
+            str(screenshot_path)
+        )
+
+        print(f"\nScreenshot saved: {screenshot_path}")
+
+        return screenshot_path

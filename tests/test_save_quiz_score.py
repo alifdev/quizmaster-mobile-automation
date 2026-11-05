@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.appiumby import AppiumBy
 
+from pages import results_page
 from pages.home_page import HomePage
 from pages.quiz_page import QuizPage
 from pages.results_page import ResultsPage
@@ -93,4 +94,7 @@ def test_player_can_save_quiz_score(driver):
     )
 
     print("\nPlayer score successfully saved and verified.")
+
+    # Step 8: Capture leaderboard screenshot.
+    results_page.save_screenshot("04-leaderboard.png")
     

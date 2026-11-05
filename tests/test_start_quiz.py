@@ -13,6 +13,9 @@ def test_user_can_start_quiz(driver: WebDriver):
     home_page.start_quiz()
 
     assert quiz_page.is_quiz_screen_displayed()
+
+    quiz_page.save_screenshot("02-quiz-screen.png")
+
     assert quiz_page.get_question_counter() == "Question 1 / 10"
 
     question_text = quiz_page.get_question_text()
