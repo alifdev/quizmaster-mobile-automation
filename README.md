@@ -1,3 +1,5 @@
+![Android Automation CI](https://github.com/alifdev/quizmaster-mobile-automation/actions/workflows/android-automation.yml/badge.svg)
+
 # QuizMaster Android Mobile Automation
 
 An Android mobile test automation project for **QuizMaster**, a Flutter-based quiz application. This project uses Python, Appium, and Pytest to validate key application flows through an automated test suite.
