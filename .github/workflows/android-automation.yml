@@ -81,30 +81,7 @@ jobs:
           profile: pixel_7
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: |
-            adb install -r app-release.apk
-
-            nohup appium --address 127.0.0.1 --port 4723 > appium.log 2>&1 &
-
-            for attempt in $(seq 1 30); do
-              if curl -fsS http://127.0.0.1:4723/status > /dev/null; then
-                echo "Appium server is ready."
-                break
-              fi
-
-              sleep 2
-            done
-
-            if ! curl -fsS http://127.0.0.1:4723/status > /dev/null; then
-              echo "Appium server failed to start."
-              cat appium.log
-              exit 1
-            fi
-
-            pytest -v \
-              --html=reports/pytest-report.html \
-              --self-contained-html \
-              --junitxml=reports/junit-results.xml
+          script: bash .github/scripts/run-android-tests.sh
 
       - name: Upload test reports and screenshots
         if: always()
