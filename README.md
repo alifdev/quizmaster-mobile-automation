@@ -2,101 +2,127 @@
 
 # QuizMaster Android Mobile Automation
 
-An Android mobile test automation project for **QuizMaster**, a Flutter-based quiz application. This project uses Python, Appium, and Pytest to validate key application flows through an automated test suite.
+An Android mobile test automation portfolio project for **QuizMaster**, a Flutter-based quiz application. Built with Python, Appium, and Pytest to automate and validate key application flows on Android.
 
-## Project Overview
-
-The framework follows the **Page Object Model (POM)** design pattern to separate test logic from page interactions and improve maintainability.
+The project demonstrates mobile UI automation, Page Object Model (POM) architecture, test data validation, regression execution, and Continuous Integration (CI) using GitHub Actions.
 
 **Application Under Test:** [QuizMaster](https://github.com/Kevinnnhub/quizmaster)
 
 ## Tech Stack
 
-- Python 3.14
-- Pytest 9.2
-- Appium-Python-Client 6.0
-- Appium Server 3.1.2
-- UiAutomator2 Driver 6.7.1
-- Selenium WebDriver
-- Android Emulator
+| Technology | Version / Purpose |
+|---|---|
+| Python | 3.14 |
+| Pytest | 9.2.0 |
+| Appium-Python-Client | 6.0.9 |
+| Appium Server | 3.1.2 |
+| UiAutomator2 Driver | 6.7.1 |
+| Selenium WebDriver | Mobile UI interaction |
+| Android Emulator | Android test environment |
+| GitHub Actions | CI automation |
 
 ## Automated Test Coverage
 
-The current test suite contains 15 automated tests covering:
+The project currently contains **15 automated tests** covering the following application areas:
 
 | Area | Test Scenarios |
 |---|---|
-| App Launch | Verify that the application opens and the home screen is displayed |
+| App Launch | Verify application launch and Home Screen availability |
 | Category Selection | Select the History quiz category |
 | Quiz Initialization | Start a quiz and verify the initial question |
-| Answer Selection | Select an answer and validate the feedback |
-| Question Progression | Verify progression to the next question |
-| Answer Validation | Validate answers using the application's question data |
+| Answer Selection | Select answers and validate UI feedback |
+| Question Progression | Verify progression between questions |
+| Answer Validation | Validate answers against the application's question dataset |
 | Timer | Verify countdown behavior and timer expiration |
-| Quiz Completion | Complete a quiz and verify the results screen |
-| Score Calculation | Verify the final score calculation |
-| Quiz State | Verify quiz state reset when starting a new session |
-| Replay | Start a new quiz using the Play Again action |
+| Quiz Completion | Complete a quiz and verify the Results Screen |
+| Score Calculation | Validate the final quiz score |
+| Quiz State | Verify state reset when starting a new quiz |
+| Replay | Start another quiz using the Play Again action |
 | Leaderboard | Save a quiz score and verify the leaderboard entry |
+
+## Framework Architecture
+
+This project follows the **Page Object Model (POM)** design pattern to separate test scenarios from page interactions and improve maintainability.
+
+- **Page Object Model:** Organizes page-specific locators and interactions into reusable page classes.
+- **Base Page:** Centralizes common UI actions and explicit wait behavior.
+- **Data-Driven Validation:** Uses the application's question dataset to validate correct answers.
+- **Explicit Waits:** Waits for relevant UI elements and application state changes.
+- **Independent Test Scenarios:** Organizes automated checks into separate test cases.
 
 ## Project Structure
 
 ```text
 QuizMaster-Mobile-Automation/
-├── config/
-│   └── settings.py
-├── pages/
-│   ├── base_page.py
-│   ├── home_page.py
-│   ├── quiz_page.py
-│   └── results_page.py
-├── reports/
-├── test_data/
-│   └── questions.json
-├── tests/
-│   ├── test_answer_key.py
-│   ├── test_answer_selection.py
-│   ├── test_app_launch.py
-│   ├── test_category_selection.py
-│   ├── test_play_again.py
-│   ├── test_question_progression.py
-│   ├── test_quiz_answer_key.py
-│   ├── test_quiz_completion.py
-│   ├── test_quiz_full_answer_key.py
-│   ├── test_quiz_score_calculation.py
-│   ├── test_quiz_state_reset.py
-│   ├── test_quiz_timer.py
-│   ├── test_quiz_timer_expiration.py
-│   ├── test_save_quiz_score.py
-│   └── test_start_quiz.py
-├── utils/
-│   └── answer_key.py
-├── conftest.py
-├── pytest.ini
-├── requirements.txt
-└── .gitignore
+|-- .github/
+|   |-- scripts/
+|   |   |-- run-android-tests.sh
+|   |-- workflows/
+|       |-- android-automation.yml
+|-- config/
+|   |-- settings.py
+|-- pages/
+|   |-- __init__.py
+|   |-- base_page.py
+|   |-- home_page.py
+|   |-- quiz_page.py
+|   |-- results_page.py
+|-- reports/
+|   |-- .gitkeep
+|-- screenshots/
+|   |-- 01-home-screen.png
+|   |-- 02-quiz-screen.png
+|   |-- 03-results-screen.png
+|   |-- 04-leaderboard.png
+|-- test_data/
+|   |-- .gitkeep
+|-- tests/
+|   |-- test_answer_key.py
+|   |-- test_answer_selection.py
+|   |-- test_app_launch.py
+|   |-- test_category_selection.py
+|   |-- test_play_again.py
+|   |-- test_question_progression.py
+|   |-- test_quiz_answer_key.py
+|   |-- test_quiz_completion.py
+|   |-- test_quiz_full_answer_key.py
+|   |-- test_quiz_score_calculation.py
+|   |-- test_quiz_state_reset.py
+|   |-- test_quiz_timer.py
+|   |-- test_quiz_timer_expiration.py
+|   |-- test_save_quiz_score.py
+|   |-- test_start_quiz.py
+|-- utils/
+|   |-- answer_key.py
+|-- conftest.py
+|-- pytest.ini
+|-- requirements.txt
+|-- .gitattributes
+|-- .gitignore
+|-- README.md
 ```
 
 ## Prerequisites
 
 Make sure the following tools are installed and configured:
 
-- Python 3.14 or compatible version
+- Python 3.14
 - Node.js and npm
 - Java JDK 17
 - Android SDK and Android Emulator
+- Android Debug Bridge (ADB)
 - Appium Server
 - Appium UiAutomator2 driver
 
-The project was developed and tested on Windows using an Android emulator.
+The project was developed and tested locally on Windows using an Android emulator.
 
 ## Setup and Installation
 
 ### 1. Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
-cd QuizMaster-Mobile-Automation
+git clone https://github.com/alifdev/quizmaster-mobile-automation.git
+cd quizmaster-mobile-automation
 ```
 
 ### 2. Create and activate a virtual environment
@@ -114,19 +140,19 @@ pip install -r requirements.txt
 
 ### 4. Install Appium
 
-If Appium is not already installed:
+Install the required Appium version:
 
 ```bash
-npm install -g appium
+npm install -g appium@3.1.2
 ```
 
 Install the UiAutomator2 driver:
 
 ```bash
-appium driver install uiautomator2
+appium driver install uiautomator2@6.7.1
 ```
 
-### 5. Prepare the Android emulator
+### 5. Prepare the Android emulator and application
 
 Start an Android emulator and verify that it is detected:
 
@@ -134,7 +160,11 @@ Start an Android emulator and verify that it is detected:
 adb devices
 ```
 
-Make sure the QuizMaster application is installed on the emulator.
+Download the QuizMaster APK from the [original application repository](https://github.com/Kevinnnhub/quizmaster), then install it:
+
+```bash
+adb install -r app-release.apk
+```
 
 The current configuration uses:
 
@@ -144,7 +174,31 @@ The current configuration uses:
 
 Update `config/settings.py` if your emulator or application configuration is different.
 
-### 6. Start the Appium server
+### 6. Prepare the test dataset
+
+The question dataset belongs to the original QuizMaster application repository and is not redistributed in this automation repository.
+
+Download the dataset from the original source:
+
+[QuizMaster questions.json](https://raw.githubusercontent.com/Kevinnnhub/quizmaster/main/assets/questions.json)
+
+On Windows PowerShell:
+
+```powershell
+Invoke-WebRequest `
+  -Uri "https://raw.githubusercontent.com/Kevinnnhub/quizmaster/main/assets/questions.json" `
+  -OutFile "test_data/questions.json"
+```
+
+The expected file location is:
+
+```text
+test_data/questions.json
+```
+
+The `AnswerKey` utility reads this local dataset to validate expected correct answers during automated tests.
+
+### 7. Start the Appium server
 
 Open a separate terminal and run:
 
@@ -152,7 +206,7 @@ Open a separate terminal and run:
 appium --address 127.0.0.1 --port 4723
 ```
 
-### 7. Run the automated tests
+### 8. Run the automated tests
 
 From the project root directory:
 
@@ -166,7 +220,15 @@ For a shorter failure report:
 pytest -v --tb=short
 ```
 
-## Test Execution Result
+To generate HTML and JUnit XML reports:
+
+```bash
+pytest -v --html=reports/pytest-report.html --self-contained-html --junitxml=reports/junit-results.xml
+```
+
+## Test Execution Results
+
+### Local Regression Execution
 
 Latest full regression execution:
 
@@ -175,40 +237,56 @@ Latest full regression execution:
 | Total Tests | 15 |
 | Passed | 15 |
 | Failed | 0 |
-| Execution Time | 6 minutes 29 seconds |
+| Execution Time | 6 minutes 36 seconds |
 
-**Status: All 15 automated tests passed.**
+**Result: 15/15 tests passed locally.**
 
-## Test Data
+### GitHub Actions CI
 
-The question dataset is maintained by the original QuizMaster application repository and is not redistributed in this automation repository.
+The automated test suite is integrated with GitHub Actions to execute mobile UI regression tests in a GitHub-hosted environment.
 
-Download the dataset from the original source:
+| Configuration | Details |
+|---|---|
+| CI Platform | GitHub Actions |
+| Runner | GitHub-hosted Ubuntu |
+| Android Emulator | API 35 |
+| Automation Framework | Appium + Pytest |
+| Test Execution | Automated |
+| Latest Verified Result | 15 passed, 0 failed |
 
-[QuizMaster questions.json](https://raw.githubusercontent.com/Kevinnnhub/quizmaster/main/assets/questions.json)
+The CI workflow performs the following steps:
 
-Place the downloaded file at:
+1. Checks out the repository.
+2. Sets up Python, Java, and Node.js.
+3. Installs Python dependencies, Appium, and UiAutomator2.
+4. Downloads the application APK and test dataset.
+5. Starts an Android emulator.
+6. Installs the application and starts the Appium server.
+7. Executes the automated test suite.
+8. Uploads test reports and available execution evidence as GitHub Actions artifacts.
 
-`test_data/questions.json`
+HTML reports, JUnit XML results, screenshots, and diagnostic logs are configured as CI artifacts for further inspection.
 
-On Windows PowerShell, you can download it using:
+[View GitHub Actions Workflow](https://github.com/alifdev/quizmaster-mobile-automation/actions/workflows/android-automation.yml)
 
-```powershell
-Invoke-WebRequest `
-  -Uri "https://raw.githubusercontent.com/Kevinnnhub/quizmaster/main/assets/questions.json" `
-  -OutFile "test_data/questions.json"
-```
+## Application Screenshots
 
-The `AnswerKey` utility reads this local dataset to validate the expected correct answers during automated tests.
+### Home Screen
 
-## Design Approach
+![QuizMaster Home Screen](screenshots/01-home-screen.png)
 
-- **Page Object Model:** Separates page locators and interactions from test scenarios.
-- **Reusable Base Page:** Centralizes common actions and explicit wait behavior.
-- **Data-Driven Validation:** Uses question data to validate correct answers.
-- **Explicit Waits:** Waits for relevant UI elements and application state changes.
-- **Independent Test Scenarios:** Covers key user flows through separate test cases.
+### Quiz Screen
+
+![QuizMaster Quiz Screen](screenshots/02-quiz-screen.png)
+
+### Results Screen
+
+![QuizMaster Results Screen](screenshots/03-results-screen.png)
+
+### Leaderboard
+
+![QuizMaster Leaderboard](screenshots/04-leaderboard.png)
 
 ## Disclaimer
 
-This repository contains the mobile automation test framework. The QuizMaster application is a separate application used as the system under test. All product names and application source code belong to their respective owners.
+This repository contains an independent mobile automation test framework. QuizMaster is a separate application used as the system under test. All application source code, product names, and related assets belong to their respective owners.
