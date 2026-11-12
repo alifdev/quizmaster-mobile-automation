@@ -1,6 +1,4 @@
 
-from unicodedata import category
-
 from appium.webdriver.common.appiumby import AppiumBy
 
 from pages.base_page import BasePage
@@ -14,23 +12,23 @@ class HomePage(BasePage):
     )
 
     CATEGORIES = [
-    "Geography",
-    "History",
-    "Movies & TV",
-    "Science",
-    "Sports",
+        "Geography",
+        "History",
+        "Movies & TV",
+        "Science",
+        "Sports",
     ]
 
     CATEGORY_BUTTON = (
-    AppiumBy.XPATH,
-    "//android.widget.Button["
-    "@content-desc='Choose a topic…' or "
-    "@content-desc='Geography' or "
-    "@content-desc='History' or "
-    "@content-desc='Movies & TV' or "
-    "@content-desc='Science' or "
-    "@content-desc='Sports'"
-    "]"
+        AppiumBy.XPATH,
+        "//android.widget.Button["
+        "@content-desc='Choose a topic…' or "
+        "@content-desc='Geography' or "
+        "@content-desc='History' or "
+        "@content-desc='Movies & TV' or "
+        "@content-desc='Science' or "
+        "@content-desc='Sports'"
+        "]"
     )
 
     START_QUIZ_BUTTON = (
@@ -45,7 +43,9 @@ class HomePage(BasePage):
 
     def select_category(self, category):
         if category not in self.CATEGORIES:
-            raise ValueError(f"Unsupported category: {category}")
+            raise ValueError(
+                f"Unsupported category: {category}"
+            )
 
         self.click(self.CATEGORY_BUTTON)
 
@@ -64,7 +64,5 @@ class HomePage(BasePage):
 
         return self.find_element(selected_locator)
 
-    
     def start_quiz(self):
         self.click(self.START_QUIZ_BUTTON)
-
