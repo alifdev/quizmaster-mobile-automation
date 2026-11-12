@@ -91,6 +91,8 @@ jobs:
           path: |
             reports/pytest-report.html
             reports/junit-results.xml
+            reports/ci-home-screen.png
+            reports/ci-page-source.xml
             screenshots/*.png
             appium.log
           if-no-files-found: warn
